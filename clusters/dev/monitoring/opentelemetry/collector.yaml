@@ -4,7 +4,7 @@ metadata:
   name: otel-collector
   namespace: monitoring
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -12,12 +12,6 @@ spec:
             endpoint: 0.0.0.0:4317
           http:
             endpoint: 0.0.0.0:4318
-      prometheus:
-        config:
-          scrape_configs:
-            - job_name: 'kbot'
-              static_configs:
-                - targets: ['kbot.kbot.svc.cluster.local:8080']
 
     processors:
       batch:
@@ -37,6 +31,6 @@ spec:
           processors: [batch]
           exporters: [jaeger]
         metrics:
-          receivers: [otlp, prometheus]
+          receivers: [otlp]
           processors: [batch]
           exporters: [prometheus]
