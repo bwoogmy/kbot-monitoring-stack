@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
   - operator.yaml
+  - collector.yaml
   - jaeger.yaml
-  # - collector.yaml  # Включим позже, когда оператор установится
