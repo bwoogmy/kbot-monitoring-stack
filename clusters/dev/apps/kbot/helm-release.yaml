@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kbot
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: helm
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: kbot-source
+  interval: 30s
+  targetNamespace: kbot
+  dependsOn:
+    - name: kbot-source
