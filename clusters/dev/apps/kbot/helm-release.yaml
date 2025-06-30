@@ -13,5 +13,4 @@ spec:
         name: kbot-source
   interval: 30s
   targetNamespace: kbot
-  dependsOn:
-    - name: kbot-source
+  # Убираем зависимости пока
