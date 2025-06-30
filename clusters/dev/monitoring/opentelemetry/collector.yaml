@@ -19,8 +19,8 @@ spec:
     exporters:
       prometheus:
         endpoint: "0.0.0.0:8889"
-      jaeger:
-        endpoint: jaeger-collector.monitoring.svc.cluster.local:14250
+      otlp/jaeger:
+        endpoint: http://jaeger-collector.monitoring.svc.cluster.local:14268
         tls:
           insecure: true
 
@@ -29,7 +29,7 @@ spec:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [jaeger]
+          exporters: [otlp/jaeger]
         metrics:
           receivers: [otlp]
           processors: [batch]
